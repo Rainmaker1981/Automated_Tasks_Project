@@ -23,7 +23,8 @@ flowchart LR
 ```
 ---
 
-📁 Repo Structure
+## 📁 Repo Structure
+
 Automated_Tasks_Project/
 │
 ├── README.md
@@ -46,9 +47,10 @@ Automated_Tasks_Project/
     ├── Excel_Table_Design.md
     ├── PowerAutomate_Tips.md
     └── Troubleshooting.md
+
 ---
 
-📊 Excel Master Task Table
+## 📊 Excel Master Task Table
 
 File (template in this repo):
 excel/Student_Tasks_Template.xlsx
@@ -82,9 +84,10 @@ Course – course name/code
 Status – New, Pushed_to_Planner, Archived
 
 CreatedOn – when the row was first created
+
 ---
 
-⚙️ Flows
+## ⚙️ Flows
 
 Detailed docs live in /flows:
 
@@ -127,9 +130,10 @@ Creates Planner tasks
 Writes Planner checklist items from the Checklist column
 
 Sets row Status = Pushed_to_Planner
+
 ---
 
-🌐 Canvas API
+## 🌐 Canvas API
 
 Docs and helper files live in /canvas_api:
 
@@ -138,9 +142,10 @@ Canvas_API_Setup.md – how to get the base URL, token, and course IDs
 example_canvas_json.json – sample assignments response
 
 ParseJSON_Schema.json – schema used by the Parse JSON action in Flow C
+
 ---
 
-📚 Reference Docs
+## 📚 Reference Docs
 
 The /reference folder contains:
 
@@ -149,9 +154,10 @@ Excel_Table_Design.md – exact column layout and types for Tasks
 PowerAutomate_Tips.md – expressions, OData filters, duplicate protection patterns
 
 Troubleshooting.md – common error causes and fixes (dates, Canvas auth, duplicates, etc.)
+
 ---
 
-🚀 How to Use This Project
+## 🚀 How to Use This Project
 
 Create the live Excel file in OneDrive/SharePoint based on Student_Tasks_Template.xlsx.
 
@@ -168,3 +174,5 @@ From that point:
 Outlook + Calendar + Canvas → Excel → Planner
 
 Excel Status and columns in Tasks become your single source of truth.
+
+---
