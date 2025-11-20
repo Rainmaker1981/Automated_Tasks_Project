@@ -1,124 +1,91 @@
-# ✅ **3. Troubleshooting.md**
+# Troubleshooting Guide — Automated Tasks Project
 
-🧹 General Debugging Checklist
+This guide covers the most common issues for Flows A–D.
 
-1. Check Run History
-
-2. Inspect Inputs and Outputs of failing action
-
-3. Use “Compose” to peek at variables
-
-4. Validate your OData filter syntax
-
-5. Test with sample JSON
-
-6. Disable/enable flow if stuck
-
-7. Export and re-import flows if they become corrupted
-
-
+---
 
 # ❌ Issue 1: Planner Due Date Format Error
 
-Error: The value '45981' does not match expected format 'String/date-time'
+Error:
+The value '45981' does not match expected format 'String/date-time'.
 
-### 💡 Cause:
-Excel stored date as a **serial number** instead of ISO date.
-
-### ✅ Fix:
-Use the date conversion expression:
-
-```text
+💡 Cause: Excel returned a serial number  
+✅ Fix:
 formatDateTime(
   addDays('1899-12-30', int(item()?['DueDate'])),
   'yyyy-MM-ddTHH:mm:ssZ'
 )
 
-❌ Issue 2: Duplicate Tasks Appearing in Planner
-💡 Cause:
+---
 
-Flow D didn’t detect the row as already processed.
+# ❌ Issue 2: Duplicate Tasks Appearing in Planner
 
-✅ Fix:
+Cause: Status not updated or duplicate check missing  
+Fix:
+- Filter Excel rows: Status eq 'New'  
+- Update Status → Pushed_to_Planner after creation  
 
-Ensure Flow D:
+---
 
-Filters only rows where Status eq 'New'
+# ❌ Issue 3: Calendar/Email Items Reprocessed
 
-Updates each row to Pushed_to_Planner immediately after creation
-
-❌ Issue 3: Calendar Events or Emails Reprocessed Multiple Times
-💡 Cause:
-
-Duplicate check missing or broken.
-
-🔧 Fix:
-
-For every flow:
+Cause: No Source + SourceId duplicate check  
+Fix:
 Source eq '<System>' and SourceId eq '<ID>'
 
-❌ Issue 4: Canvas API — 401 Unauthorized
-Reasons:
+---
 
-Token expired
+# ❌ Issue 4: Canvas API — 401 Unauthorized
 
-Token missing or mis-typed
+- Token invalid/expired  
+- Missing space in “Bearer TOKEN”  
+- Wrong domain  
 
-Using “BearerXYZ” instead of “Bearer XYZ”
+---
 
-Fix:
+# ❌ Issue 5: Canvas API — 403 Forbidden
 
-Header must be:
-Authorization: Bearer YOUR_TOKEN
+- Not enrolled in course  
+- Token lacks permissions  
+- Incorrect course_id  
 
-❌ Issue 5: Canvas API — 403 Forbidden
-Reasons:
+---
 
-Token does not have permission
-
-You are not enrolled in the course
-
-Wrong course_id
+# ❌ Issue 6: Excel File Not Found
 
 Fix:
+- Ensure file is in OneDrive/SharePoint  
+- Rebind Excel connections  
+- Avoid duplicate file names  
 
-Verify:
+---
 
-Course access
-
-Token scope
-
-Token expiration
-
-❌ Issue 6: Excel Connector Cannot Find File
-Reasons:
-
-You moved/renamed the file
-
-Two files with the exact name exist in OneDrive
-
-File not in a supported connector location
+# ❌ Issue 7: Slow Planner Task Creation
 
 Fix:
+- Increase flow interval  
+- Reduce volume  
+- Checklist processing increases loops  
 
-Put the LIVE file in OneDrive or SharePoint
+---
 
-Rebind Excel actions to the correct file
+# 🧹 Debugging Checklist
 
-❌ Issue 7: Slow Planner Task Creation
-Reasons:
+1. Check Run History  
+2. Inspect Inputs/Outputs  
+3. Add Compose steps  
+4. Check OData syntax  
+5. Test JSON structures  
+6. Disable/re-enable flows  
+7. Export/import flows if needed  
 
-Too many tasks in a single run
+---
 
-Planner API rate limiting
+# 🎯 Summary
 
-Checklist items causing extra loops
-
-Fix:
-
-Increase recurrence interval
-
-Reduce number of tasks processed
-
-Batch creation (advanced)
-
+This guide resolves issues involving:
+- Planner  
+- Canvas API  
+- Excel connector  
+- Duplicates  
+- Date formatting  

@@ -13,7 +13,9 @@ The *live* version must reside in **OneDrive or SharePoint**.
 
 The table must be named exactly:
 
-
+```
+Tasks
+```
 
 Excel → Table Design → Table Name → `Tasks`
 
@@ -44,8 +46,8 @@ Below are the **required columns**, their purpose, and their recommended data ty
 ### ✔ Date Columns  
 Format these as **Date/Time** in Excel:
 
-- `StartDate`
-- `DueDate`
+- `StartDate`  
+- `DueDate`  
 - `CreatedOn`
 
 This helps Flow D avoid serial-number date problems.
@@ -66,3 +68,43 @@ Use Text type for:
 
 # 🧩 Example Table Layout
 
+```
+-----------------------------------------------------------------------------------------
+| TaskId         | Title      | Description       | Checklist | StartDate | DueDate | … |
+-----------------------------------------------------------------------------------------
+| OUTLOOK-12345  | Lab 6      | details here…     | - step 1… | 1/21/25   | 1/22/25 | … |
+-----------------------------------------------------------------------------------------
+```
+
+---
+
+# 🔧 Additional Notes
+
+### ✔ StartDate Behavior
+Flows will fill `StartDate` using:
+
+1. Parsed value (Canvas `unlock_at`, Calendar event start, etc.)  
+2. If missing → fallback:
+   ```text
+   utcNow()
+   ```
+
+### ✔ Checklist Behavior
+Stored as **multi-line text** so Planner can convert each line into checklist items.
+
+### ✔ Status Flow  
+- Flow A/B/C set status to `New`  
+- Flow D changes it to `Pushed_to_Planner`  
+- You may manually set `Archived`  
+
+---
+
+# ✅ Summary
+
+This table structure:
+
+- Ensures Flows A → B → C → D run without errors  
+- Standardizes required fields  
+- Prevents Planner duplication  
+- Supports Checklist + StartDate features  
+- Keeps task ingestion from all systems unified
