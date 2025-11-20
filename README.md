@@ -1,4 +1,4 @@
-# automated tasks integration project
+# Automated Tasks Integration Project
 
 this repo documents an automation system that turns school “stuff” into actionable tasks:
 
@@ -11,7 +11,7 @@ once it’s running, new tasks show up in one place (planner), but the source of
 
 ---
 
-## architecture overview
+## Architecture Overview
 
 ```mermaid
 flowchart lr
