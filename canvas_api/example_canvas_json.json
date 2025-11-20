@@ -1,1 +1,27 @@
+[
+  {
+    "id": 98765,
+    "course_id": 12345,
+    "name": "Chapter 5 Quiz",
+    "description": "<p>Read Chapter 5 and complete the quiz.</p>",
+    "due_at": "2025-11-22T23:59:00Z",
+    "unlock_at": "2025-11-20T00:00:00Z",
+    "lock_at": null,
+    "created_at": "2025-11-10T14:30:00Z",
+    "updated_at": "2025-11-10T14:30:00Z",
+    "html_url": "https://unk.instructure.com/courses/12345/assignments/98765"
+  },
+  {
+    "id": 98766,
+    "course_id": 67890,
+    "name": "Lab 6 – IPv6 Subnetting",
+    "description": "<p>Complete the IPv6 subnetting lab.</p>",
+    "due_at": "2025-11-25T17:00:00Z",
+    "unlock_at": null,
+    "lock_at": null,
+    "created_at": "2025-11-11T09:00:00Z",
+    "updated_at": "2025-11-11T09:00:00Z",
+    "html_url": "https://unk.instructure.com/courses/67890/assignments/98766"
+  }
+]
 
