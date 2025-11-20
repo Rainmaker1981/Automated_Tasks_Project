@@ -1,4 +1,3 @@
-✅ Corrected README.md (Copy & Paste This Directly)
 # Automated Tasks Integration Project
 
 This project automates capturing tasks from multiple sources:
@@ -26,6 +25,8 @@ flowchart LR
 ---
 
 ## 📁 Repo Structure
+
+```
 Automated_Tasks_Project/
 │
 ├── README.md
@@ -48,136 +49,98 @@ Automated_Tasks_Project/
     ├── Excel_Table_Design.md
     ├── PowerAutomate_Tips.md
     └── Troubleshooting.md
+```
 
 ---
 
 ## 📊 Excel Master Task Table
 
-Template file: excel/Student_Tasks_Template.xlsx
-Live file: Must live in OneDrive or SharePoint for Power Automate.
+**Template:** `excel/Student_Tasks_Template.xlsx`  
+**Live file:** Must live in OneDrive or SharePoint.
 
-Table name:
+### **Table name:**
+```
 Tasks
+```
 
-Key columns (see reference/Excel_Table_Design.md for full details):
+### Key columns (see reference/Excel_Table_Design.md):
 
-TaskId – unique ID (OUTLOOK-…, CAL-…, CANVAS-…)
+- TaskId – unique ID (`OUTLOOK-…`, `CAL-…`, `CANVAS-…`)
+- Title – short task title  
+- Description – detailed text  
+- Checklist – parsed multi-line sub-tasks  
+- StartDate – parsed or fallback to `utcNow()`  
+- DueDate – deadline timestamp  
+- Source – Outlook / Calendar / Canvas  
+- SourceId – unique ID from the source  
+- Course – course name/code  
+- Status – `New`, `Pushed_to_Planner`, `Archived`  
+- CreatedOn – timestamp when row was created  
 
-Title – short task title
+---
 
-Description – longer body text / instructions
+## ⚙️ Flows
 
-Checklist – parsed sub-tasks (multi-line text)
+### FlowA_Outlook_to_Excel.md
+- Trigger: new email  
+- Filters relevant messages  
+- Builds TaskId, StartDate, DueDate, Checklist  
+- Inserts into Excel with Source = Outlook  
 
-StartDate – parsed or fallback to utcNow()
+### FlowB_Calendar_to_Excel.md
+- Trigger: event added/updated  
+- Uses event start/end as StartDate/DueDate  
+- Upserts into Excel with Source = Calendar  
 
-DueDate – deadline
+### FlowC_CanvasAPI_to_Excel.md
+- Trigger: recurrence  
+- Calls Canvas API  
+- Uses unlock_at as StartDate, due_at as DueDate  
+- Upserts into Excel with Source = Canvas  
 
-Source – Outlook / Calendar / Canvas
-
-SourceId – raw ID from the source
-
-Course – course name/code
-
-Status – New, Pushed_to_Planner, Archived
-
-CreatedOn – when the row was created
-
-⚙️ Flows
-
-Documentation stored in /flows:
-
-FlowA_Outlook_to_Excel.md
-
-Trigger: new email
-
-Filters relevant messages
-
-Builds TaskId, StartDate, DueDate, Checklist
-
-Inserts into Excel with Source = Outlook
-
-FlowB_Calendar_to_Excel.md
-
-Trigger: calendar event added/updated
-
-Uses event start/end as StartDate/DueDate
-
-Upserts into Excel with Source = Calendar
-
-FlowC_CanvasAPI_to_Excel.md
-
-Trigger: recurrence
-
-Calls Canvas API for assignments
-
-Uses unlock_at (StartDate), due_at (DueDate)
-
-Upserts into Excel with Source = Canvas
-
-FlowD_Excel_to_Planner.md
-
-Trigger: recurrence
-
-Selects rows where Status = New
-
-Creates Planner tasks
-
-Builds Planner checklist from Excel Checklist
-
-Sets Status = Pushed_to_Planner
+### FlowD_Excel_to_Planner.md
+- Trigger: recurrence  
+- Selects rows where Status = New  
+- Creates Planner tasks  
+- Builds checklists from Excel `Checklist` column  
+- Sets Status = Pushed_to_Planner  
 
 ---
 
 ## 🌐 Canvas API
 
-Docs and helper files located in /canvas_api:
+Docs and helper files in `/canvas_api`:
 
-Canvas_API_Setup.md — how to get base URL, token, course IDs
-
-example_canvas_json.json — sample assignment data
-
-ParseJSON_Schema.json — schema for Canvas Parse JSON action
+- Canvas_API_Setup.md  
+- example_canvas_json.json  
+- ParseJSON_Schema.json  
 
 ---
 
 ## 📚 Reference Docs
 
-Stored in /reference:
+In `/reference`:
 
-Excel_Table_Design.md — exact table structure for Tasks
-
-PowerAutomate_Tips.md — expressions, OData filters, duplicate-protection patterns
-
-Troubleshooting.md — common error causes and fixes (dates, Canvas auth, duplicates, etc.)
+- Excel_Table_Design.md  
+- PowerAutomate_Tips.md  
+- Troubleshooting.md  
 
 ---
 
 ## 🚀 How to Use This Project
 
-Create the live Excel file in OneDrive/SharePoint, based on Student_Tasks_Template.xlsx.
+1. Deploy Excel template into OneDrive/SharePoint.  
+2. Build all flows using `/flows`.  
+3. Configure Canvas API.  
+4. Test each flow individually.  
+5. Turn all flows on.
 
-Build Flows A, B, C, and D using the documentation in /flows.
+### After setup:
 
-Configure Canvas API access using /canvas_api/Canvas_API_Setup.md.
+**Outlook + Calendar + Canvas → Excel → Planner**
 
-Test each flow individually:
+Excel `Status` controls which rows get pushed to Planner.
 
-Email → Excel
-
-Calendar → Excel
-
-Canvas → Excel
-
-Excel → Planner
-
-Turn all flows ON.
-
-After setup:
-
-Outlook + Calendar + Canvas → Excel → Planner
-Excel’s Status column controls when rows are sent to Planner.
-Planner becomes your unified student task dashboard.
-
+Planner becomes your unified student task board.
 
 ---
