@@ -20,6 +20,7 @@ flowchart LR
     B[Outlook Calendar] -->|Flow B| D
     C[Canvas API] -->|Flow C| D
     D -->|Flow D| E[Microsoft Planner]
+---
 
 📁 Repo Structure
 Automated_Tasks_Project/
@@ -44,6 +45,7 @@ Automated_Tasks_Project/
     ├── Excel_Table_Design.md
     ├── PowerAutomate_Tips.md
     └── Troubleshooting.md
+---
 
 📊 Excel Master Task Table
 
@@ -79,6 +81,7 @@ Course – course name/code
 Status – New, Pushed_to_Planner, Archived
 
 CreatedOn – when the row was first created
+---
 
 ⚙️ Flows
 
@@ -123,6 +126,7 @@ Creates Planner tasks
 Writes Planner checklist items from the Checklist column
 
 Sets row Status = Pushed_to_Planner
+---
 
 🌐 Canvas API
 
@@ -133,6 +137,7 @@ Canvas_API_Setup.md – how to get the base URL, token, and course IDs
 example_canvas_json.json – sample assignments response
 
 ParseJSON_Schema.json – schema used by the Parse JSON action in Flow C
+---
 
 📚 Reference Docs
 
@@ -143,6 +148,7 @@ Excel_Table_Design.md – exact column layout and types for Tasks
 PowerAutomate_Tips.md – expressions, OData filters, duplicate protection patterns
 
 Troubleshooting.md – common error causes and fixes (dates, Canvas auth, duplicates, etc.)
+---
 
 🚀 How to Use This Project
 
