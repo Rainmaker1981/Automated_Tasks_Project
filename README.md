@@ -14,8 +14,9 @@ once it’s running, new tasks show up in one place (planner), but the source of
 ## Architecture Overview
 
 ```mermaid
-flowchart lr
-    a[outlook email] -->|flow a| d[excel: tasks table]
-    b[outlook calendar] -->|flow b| d
-    c[canvas api] -->|flow c| d
-    d -->|flow d| e[microsoft planner]
+flowchart LR
+    A[Outlook Email] -->|Flow A| D[Excel: Tasks Table]
+    B[Outlook Calendar] -->|Flow B| D
+    C[Canvas API] -->|Flow C| D
+    D -->|Flow D| E[Microsoft Planner]
+
