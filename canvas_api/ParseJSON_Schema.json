@@ -1,1 +1,40 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "course_id": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": ["string", "null"]
+      },
+      "due_at": {
+        "type": ["string", "null"]
+      },
+      "unlock_at": {
+        "type": ["string", "null"]
+      },
+      "lock_at": {
+        "type": ["string", "null"]
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string"
+      },
+      "html_url": {
+        "type": "string"
+      }
+    },
+    "required": ["id", "course_id", "name", "due_at"]
+  }
+}
 
