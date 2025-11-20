@@ -12,7 +12,7 @@ The *live* version must reside in **OneDrive or SharePoint**.
 # 📄 Table Name: `Tasks`
 
 The table must be named exactly:
-
+Tasks
 
 Excel → Table Design → Table Name → `Tasks`
 
@@ -64,7 +64,8 @@ Use Text type for:
 ---
 
 # 🧩 Example Table Layout
-
+| TaskId | Title | Description | Checklist | StartDate | DueDate | … |
+| OUTLOOK-12345 | Lab 6 | details here… | - step 1… | 1/21/25 | 1/22/25 | … |
 
 ---
 
@@ -73,7 +74,8 @@ Use Text type for:
 ### ✔ StartDate Behavior
 Flows will fill `StartDate` using:
 
-1. Parsed value (Canvas unlock_at, Calendar event start, etc.)  
+1. Parsed value (Canvas `unlock_at`, Calendar event start, etc.)  
 2. If missing → fallback:  
    ```text
    utcNow()
+
