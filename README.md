@@ -21,8 +21,11 @@ flowchart LR
     B[Outlook Calendar] -->|Flow B| D
     C[Canvas API] -->|Flow C| D
     D -->|Flow D| E[Microsoft Planner]
+```
 
-📁 Repo Structure
+---
+
+## 📁 Repo Structure
 Automated_Tasks_Project/
 │
 ├── README.md
@@ -46,7 +49,9 @@ Automated_Tasks_Project/
     ├── PowerAutomate_Tips.md
     └── Troubleshooting.md
 
-📊 Excel Master Task Table
+---
+
+## 📊 Excel Master Task Table
 
 Template file: excel/Student_Tasks_Template.xlsx
 Live file: Must live in OneDrive or SharePoint for Power Automate.
@@ -122,7 +127,9 @@ Builds Planner checklist from Excel Checklist
 
 Sets Status = Pushed_to_Planner
 
-🌐 Canvas API
+---
+
+## 🌐 Canvas API
 
 Docs and helper files located in /canvas_api:
 
@@ -132,7 +139,9 @@ example_canvas_json.json — sample assignment data
 
 ParseJSON_Schema.json — schema for Canvas Parse JSON action
 
-📚 Reference Docs
+---
+
+## 📚 Reference Docs
 
 Stored in /reference:
 
@@ -142,7 +151,9 @@ PowerAutomate_Tips.md — expressions, OData filters, duplicate-protection patte
 
 Troubleshooting.md — common error causes and fixes (dates, Canvas auth, duplicates, etc.)
 
-🚀 How to Use This Project
+---
+
+## 🚀 How to Use This Project
 
 Create the live Excel file in OneDrive/SharePoint, based on Student_Tasks_Template.xlsx.
 
@@ -170,27 +181,3 @@ Planner becomes your unified student task dashboard.
 
 
 ---
-
-# 🟢 Summary of What Was Fixed
-
-### 1. **Closed the mermaid code block**  
-You were missing the closing ``` which breaks rendering of everything after it.
-
-### 2. **Repo structure formatted as proper code block**  
-GitHub was not rendering it correctly.
-
-### 3. **Converted section labels into headings**  
-Your sections like “📁 Repo Structure” were plain text; now they are proper `##` headings.
-
-### 4. **Added spacing and separators for clean GitHub display**
-
----
-
-If you want, I can also:
-
-- Validate **your flows**  
-- Validate **your reference files**  
-- Validate **your canvas_api setup files**  
-- Generate a combined master documentation file
-
-Just tell me **which folder you'd like validated next.**
