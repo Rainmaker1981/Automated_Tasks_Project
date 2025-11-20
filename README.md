@@ -20,6 +20,7 @@ flowchart LR
     B[Outlook Calendar] -->|Flow B| D
     C[Canvas API] -->|Flow C| D
     D -->|Flow D| E[Microsoft Planner]
+```
 ---
 
 📁 Repo Structure
